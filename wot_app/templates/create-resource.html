@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Resource</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .entry:not(:first-of-type)
+        {
+            margin-top: 10px;
+        }
+
+        .glyphicon
+        {
+            font-size: 12px;
+        }
+
+        .col-centered {
+            float: none;
+            margin: 0 auto;
+        }
+
+        div.input-group span.input-group-addon-remove {
+            cursor: pointer;
+            border-left: 0;
+        }
+
+    </style>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="height: 100px";></div>
+        <div class="row">
+            <div class="control-group col-centered col-md-8" id="fields">
+                <div class="controls">
+                    <form class="form-horizontal" method="post" action="{% url 'create-resource-submit' %}">
+                        <fieldset>
+
+                            <!-- Form Name -->
+                            <legend>Create Resource</legend>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="name">Name</label>
+                                <div class="col-md-4">
+                                    <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+                                </div>
+                            </div>
+                            <input id="token" name="token" type="hidden" value="{{ token }}"/>
+
+                            <!-- Textarea -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="data-fields">Data fields</label>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" id="data-fields" name="data-fields" style="height: 400px; font-family: monospace"></textarea>
+                                </div>
+                            </div>
+
+                            {% csrf_token %}
+
+                            <!-- Button -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="create"></label>
+                                <div class="col-md-4">
+                                    <button id="create" name="create" class="btn btn-primary">Create</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

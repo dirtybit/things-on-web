@@ -1,0 +1,1 @@
+default_app_config = 'wot_app.apps.WotConfig'
